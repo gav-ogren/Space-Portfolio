@@ -33,7 +33,6 @@ astronautLoader.load('models/astronaut.glb', function (gltf) {
     astronaut = gltf.scene;
     astronaut.scale.set(7, 7, 7);
     astronaut.position.set(650, 75, 125);
-
     astronaut.rotation.y = Math.PI / 1; 
 
     // Find the left upper arm bone
@@ -63,6 +62,45 @@ stargateLoader.load('models/stargate.glb', function (gltf) {
     stargate.position.set(650, 5, 1000);
     stargate.rotation.y = Math.PI / 1; // Rotate the stargate to face the camera
     scene.add(stargate);
+});
+
+let space_rocks; 
+const spaceRocksLoader = new THREE.GLTFLoader();
+spaceRocksLoader.load('models/space_rocks.glb', function (gltf)
+{
+    space_rocks = gltf.scene;
+    space_rocks.scale.set(15, 15, 15);
+    space_rocks.position.set(0, 0, 700);
+    scene.add(space_rocks);
+});
+
+let legoShip; 
+const legoShipLoader = new THREE.GLTFLoader();
+legoShipLoader.load('models/lego_ship.glb', function (gltf)
+{
+    legoShip = gltf.scene;
+    legoShip.scale.set(0.35, 0.35, 0.35);
+    legoShip.position.set(0, 0, 700);
+    scene.add(legoShip);
+});
+
+let spaceNebula; 
+const spaceNebulaLoader = new THREE.GLTFLoader();
+spaceNebulaLoader.load('models/space_nebula.glb', function (gltf)
+{
+    spaceNebula = gltf.scene;
+    spaceNebula.scale.set(800, 800, 800);
+    spaceNebula.position.set(0, 0, 400);
+    scene.add(spaceNebula);
+});
+let space_Sun; 
+const spaceSunLoader = new THREE.GLTFLoader();
+spaceSunLoader.load('models/space_sun.glb', function (gltf)
+{
+    space_Sun = gltf.scene;
+    space_Sun.scale.set(800, 800, 800);
+    space_Sun.position.set(500, 300, 800);
+    scene.add(space_Sun)
 });
 // SUPER BRIGHT LIGHT SETUP
 const keyLight = new THREE.DirectionalLight(0xffffff, 3);

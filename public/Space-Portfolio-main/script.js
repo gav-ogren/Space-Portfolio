@@ -71,7 +71,6 @@ spaceRocksLoader.load('models/space_rocks.glb', function (gltf)
     space_rocks = gltf.scene;
     space_rocks.scale.set(15, 15, 15);
     space_rocks.position.set(0, 0, 700);
-    scene.add(space_rocks);
 });
 
 let legoShip; 
@@ -81,7 +80,6 @@ legoShipLoader.load('models/lego_ship.glb', function (gltf)
     legoShip = gltf.scene;
     legoShip.scale.set(0.35, 0.35, 0.35);
     legoShip.position.set(0, 0, 700);
-    scene.add(legoShip);
 });
 
 let spaceNebula; 
@@ -89,9 +87,9 @@ const spaceNebulaLoader = new THREE.GLTFLoader();
 spaceNebulaLoader.load('models/space_nebula.glb', function (gltf)
 {
     spaceNebula = gltf.scene;
-    spaceNebula.scale.set(800, 800, 800);
+    spaceNebula.scale.set(900, 900, 900);
     spaceNebula.position.set(0, 0, 400);
-    scene.add(spaceNebula);
+    
 });
 let space_Sun; 
 const spaceSunLoader = new THREE.GLTFLoader();
@@ -100,7 +98,7 @@ spaceSunLoader.load('models/space_sun.glb', function (gltf)
     space_Sun = gltf.scene;
     space_Sun.scale.set(800, 800, 800);
     space_Sun.position.set(500, 300, 800);
-    scene.add(space_Sun)
+
 });
 // SUPER BRIGHT LIGHT SETUP
 const keyLight = new THREE.DirectionalLight(0xffffff, 3);
@@ -247,7 +245,7 @@ fontLoader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/helvetiker_re
         color: 0xff0000,
     }); 
     blastingOffTextMesh.rotation.y = Math.PI / -2;
-    scene.add(blastingOffTextMesh);
+   
 
     ToBiggerTextMesh = createTextMesh('to bigger', font, {
         position: new THREE.Vector3(0, 18, 155),
@@ -255,7 +253,7 @@ fontLoader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/helvetiker_re
         color: 0xff0000,
     });
     ToBiggerTextMesh.rotation.y = Math.PI / -2;
-    scene.add(ToBiggerTextMesh);
+    
 
     ChallengesTextMesh = createTextMesh('challenges!', font, {
         position: new THREE.Vector3(0, 6, 155),
@@ -263,7 +261,7 @@ fontLoader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/helvetiker_re
         color: 0xff0000,
     });
     ChallengesTextMesh.rotation.y = Math.PI / -2;
-    scene.add(ChallengesTextMesh);
+
 });
 
 function removeObjectsFromScene(obj) {
@@ -332,7 +330,7 @@ scene.add(awsMesh);
 scene.add(htmlandcssMesh);      
 scene.add(pythonMesh);
 scene.add(comptiaMesh);
-scene.add(mccMesh);
+
 scene.add(primaveraMesh);
 scene.add(evitMesh);
 
@@ -357,24 +355,22 @@ const earthMaterial = new THREE.MeshBasicMaterial({
 });
 
 // Create Earth Geometry and Mesh
-const earthGeometry = new THREE.SphereGeometry(160, 64, 64); //Update first parameter to change its raduis 
+const earthGeometry = new THREE.SphereGeometry(160, 64, 64); 
 const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-earth.position.set(40, -50, 0); // Position the Earth in the scene
+earth.position.set(40, -50, 0);
 scene.add(earth);
-
 
 const moonTexture = new THREE.TextureLoader().load('Images/moon-Texture.png');
 const moonMaterial = new THREE.MeshBasicMaterial({
     map: moonTexture
 });
 
-const moonGeomerty = new THREE.SphereGeometry(160, 64, 64); // Update first parameter to change its raduis
+const moonGeomerty = new THREE.SphereGeometry(160, 64, 64); 
 const moon = new THREE.Mesh(moonGeomerty, moonMaterial); 
-moon.scale.set(0.5, 0.5, 0.5); // Scale down the moon
-moon.position.set(650, 0, 150); // Position the Moon in the scene
+moon.scale.set(0.5, 0.5, 0.5); 
+moon.position.set(650, 0, 150);
 
-scene.add(moon); // Add the moon to the scene
-
+scene.add(moon); 
 
 // Star Particles
 // Particle Materials - For Two Diffrent Colors of Stars. Note: Edit size to change its star size 
@@ -436,20 +432,20 @@ function moveRocket(rocket_speed, rotation) {
 
 // Camera targets for dynamic camera movement
 const cameraTargets = [
-    {x: 50, y: 0, z: 400, speed: 10.5}, // Hovering aorund the earth
-    {x: 50, y: 0, z: 401, speed: 10.005},// waits about 5 seconds before moving to the next target
-    {x: 50, y: 0, z: -150, speed: 22.5}, // Moving pass earth 
-    {x: 50, y: 0, z: -550, speed: 13.5}, // Going past text meshs
+    {x: 50, y: 0, z: 400, speed: 0.5}, // Hovering aorund the earth
+    {x: 50, y: 0, z: 401, speed: 0.005},// waits about 5 seconds before moving to the next target
+    {x: 50, y: 0, z: -150, speed: 2.5}, // Moving pass earth 
+    {x: 50, y: 0, z: -550, speed: 3.5}, // Going past text meshs
     {x: 600, y: 0, z: -550, speed: 5, rotY: Math.PI / -2}, // takes a turn to the right and moves towards the rocket
-    {x: 600, y: 0, z: -549, speed: 10.05}, // waits about 2 seconds before moving to the next target
-    {x: 600, y: 0, z: -100, speed: 10}, // Rocket Moves with the camera 
-    {x: 650, y: 70, z: 80, speed: 10, rotY: Math.PI / -1}, // Camera will move towards the moon and center astronaut
-    // {x: 650, y: 72, z: 80, speed: 0.005}, // One step at a time text will appear here
-    // {x: 650, y: 0, z: 550, speed: 5}, // Will match the rocket and go inside of it 
-    {x: 650, y: 0, z: 550, speed: 10},
-    
-    {x: 650, y: 0, z: 1000, speed: 10}, // Camera will move towards the stargate
+    {x: 600, y: 0, z: -549, speed: 0.05}, // waits about 2 seconds before moving to the next target
+    {x: 600, y: 0, z: -100, speed: 1}, // Rocket Moves with the camera 
+    {x: 650, y: 70, z: 80, speed: 1, rotY: Math.PI / -1}, // Camera will move towards the moon and center astronaut
+    {x: 650, y: 72, z: 80, speed: 0.005}, // One step at a time text will appear here
+    {x: 650, y: 0, z: 550, speed: 5}, // Will match the rocket and go inside of it 
+    {x: 650, y: 0, z: 550, speed: 1},
+    {x: 650, y: 0, z: 1000, speed: 11}, // Camera will move towards the stargate
     {x: 0, y: 20, z: 995, speed: 10000, rotY: Math.PI / -1}, // Camera instantly to moves to new position after going though the stargate
+    {x: -70, y: 20, z: 200, speed: 1, rotY: Math.PI / -2}, 
     {x: -70, y: 20, z: 200, speed: 1, rotY: Math.PI / -2}, 
     
 ];
@@ -460,9 +456,10 @@ let Rantest2 = false;
 let Rantest3 = false;
 let Rantest4 = false;
 let Rantest5 = false; 
-function animate() {
-    console.log("Camera Position:", camera.position.x, camera.position.y, camera.position.z);
+let buttonListenerAdded = false; // Flag to ensure event listener is added only once
 
+function animate() {
+   
     requestAnimationFrame(animate);
     if (currentTargetIndex < cameraTargets.length) {
         const target = cameraTargets[currentTargetIndex];
@@ -496,24 +493,17 @@ function animate() {
         comptiaMesh.visible = true;
 
         // Rocket rotation 
-        moveRocket(10, true)
+        moveRocket(1, true)
 
-        // Free ram by removing the text meshens not being used
-        removeObjectsFromScene(earth); 
-        removeObjectsFromScene(aboutMeTextMesh); 
-        removeObjectsFromScene(welcomeTextMesh);
-        removeObjectsFromScene(itspecialistTextMesh);
-        removeObjectsFromScene(softwareTextMesh);
-        removeObjectsFromScene(creativetechnologistTextMesh);
        
     }
     
     if (camera.position.z == 80 && camera.position.x == 650 || Rantest4 == true) {
+        console.log("Astronaut wave function called");
         Rantest4 = true;
-        Rantest3 = false;
         astronautWave();
         
-        // For the moon text that will move towards the moon behind athe stronaut
+        // For the moon text that will move towards the moon behind athe Astronaut
         oneStepTextMesh.visible = true;
         oneStepTextMesh.position.x += 2; 
 
@@ -527,7 +517,14 @@ function animate() {
 
     }
     if (camera.position.z == 1000 && camera.position.x == 650 || Rantest5 == true) {
-        // This is code that will one once in Animate loop
+        scene.add(spaceNebula);
+        scene.add(ToBiggerTextMesh);
+        scene.add(blastingOffTextMesh);
+        scene.add(ChallengesTextMesh);
+        scene.add(space_Sun);
+        scene.add(space_rocks);
+        scene.add(legoShip);
+
         if (Rantest5 == false) {
             // Move the rocket to the stargate position
             rocket.position.set(0, 0, 1005);
@@ -547,6 +544,20 @@ function animate() {
         removeObjectsFromScene(moon);
         scene.remove(astronaut);
     }
+
+    // Show the button when the journey is complete (at the last camera target)
+    if (currentTargetIndex >= cameraTargets.length - 1 && !buttonListenerAdded) {
+        const projectsButton = document.getElementById('projectsButton');
+        if (projectsButton) {
+            projectsButton.style.display = 'block';
+            projectsButton.addEventListener('click', () => {
+                window.location.href = '/';
+            });
+            buttonListenerAdded = true;
+            console.log('Projects button displayed');
+        }
+    }
+   
     renderer.render(scene, camera);
 }
 // Start the animation loop

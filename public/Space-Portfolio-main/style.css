@@ -2,3 +2,51 @@ body{
     background-color: black;
     cursor: url('./Images/astronaut_cursor.png'), auto;	
 }
+
+#projectsButton {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 80%; /* Lowered from 50% */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 18px 40px;
+    font-size: 24px;
+    color: #fff;
+    background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+    border: 2px solid #00ffe7; /* TEMP: for debugging, remove later */
+    border-radius: 16px;
+    cursor: pointer;
+    z-index: 100;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    letter-spacing: 2px;
+    box-shadow:
+        0 0 20px #00ffe7,
+        0 0 40px #1a2980,
+        0 0 60px #00ffe7;
+    text-shadow:
+        0 0 8px #00ffe7,
+        0 0 16px #fff,
+        0 0 2px #fff;
+    transition: 
+        background 0.3s,
+        box-shadow 0.3s,
+        border-color 0.3s,
+        color 0.3s;
+}
+
+#projectsButton:hover {
+    background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+    color: #00ffe7;
+    border-color: #fff;
+    box-shadow:
+        0 0 40px #00ffe7,
+        0 0 80px #1a2980,
+        0 0 120px #00ffe7;
+    text-shadow:
+        0 0 16px #00ffe7,
+        0 0 32px #fff,
+        0 0 4px #fff;
+}
+
+/* Optional: Import a sci-fi font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');

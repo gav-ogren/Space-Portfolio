@@ -79,7 +79,7 @@ legoShipLoader.load('models/lego_ship.glb', function (gltf)
 {
     legoShip = gltf.scene;
     legoShip.scale.set(0.35, 0.35, 0.35);
-    legoShip.position.set(0, 0, 700);
+    legoShip.position.set(300, 0, 700);
 });
 
 let spaceNebula; 
@@ -237,7 +237,7 @@ fontLoader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/helvetiker_re
         color: 0xff0000, 
     });
     educationTextMesh.rotation.y = Math.PI / -2; 
-    scene.add(educationTextMesh);
+    
 
     blastingOffTextMesh = createTextMesh('Blasting off', font, {
         position: new THREE.Vector3(0, 30, 155),
@@ -331,8 +331,6 @@ scene.add(htmlandcssMesh);
 scene.add(pythonMesh);
 scene.add(comptiaMesh);
 
-scene.add(primaveraMesh);
-scene.add(evitMesh);
 
 
 mtaMesh.rotation.y = Math.PI / -2; 
@@ -432,18 +430,18 @@ function moveRocket(rocket_speed, rotation) {
 
 // Camera targets for dynamic camera movement
 const cameraTargets = [
-    {x: 50, y: 0, z: 400, speed: 0.5}, // Hovering aorund the earth
-    {x: 50, y: 0, z: 401, speed: 0.005},// waits about 5 seconds before moving to the next target
-    {x: 50, y: 0, z: -150, speed: 2.5}, // Moving pass earth 
-    {x: 50, y: 0, z: -550, speed: 3.5}, // Going past text meshs
+    {x: 50, y: 0, z: 400, speed: 10.5}, // Hovering aorund the earth
+    {x: 50, y: 0, z: 401, speed: 10.005},// waits about 5 seconds before moving to the next target
+    {x: 50, y: 0, z: -150, speed: 12.5}, // Moving pass earth 
+    {x: 50, y: 0, z: -550, speed: 13.5}, // Going past text meshs
     {x: 600, y: 0, z: -550, speed: 5, rotY: Math.PI / -2}, // takes a turn to the right and moves towards the rocket
     {x: 600, y: 0, z: -549, speed: 0.05}, // waits about 2 seconds before moving to the next target
     {x: 600, y: 0, z: -100, speed: 1}, // Rocket Moves with the camera 
     {x: 650, y: 70, z: 80, speed: 1, rotY: Math.PI / -1}, // Camera will move towards the moon and center astronaut
     {x: 650, y: 72, z: 80, speed: 0.005}, // One step at a time text will appear here
-    {x: 650, y: 0, z: 550, speed: 5}, // Will match the rocket and go inside of it 
-    {x: 650, y: 0, z: 550, speed: 1},
-    {x: 650, y: 0, z: 1000, speed: 11}, // Camera will move towards the stargate
+    {x: 650, y: 0, z: 570, speed: 5}, // Will match the rocket and go inside of it 
+    {x: 650, y: 0, z: 570, speed: 1},
+    {x: 650, y: 0, z: 1000, speed: 1}, // Camera will move towards the stargate
     {x: 0, y: 20, z: 995, speed: 10000, rotY: Math.PI / -1}, // Camera instantly to moves to new position after going though the stargate
     {x: -70, y: 20, z: 200, speed: 1, rotY: Math.PI / -2}, 
     {x: -70, y: 20, z: 200, speed: 1, rotY: Math.PI / -2}, 
@@ -453,7 +451,6 @@ let currentTargetIndex = 0;
 
 let Rantest = false; 
 let Rantest2 = false; 
-let Rantest3 = false;
 let Rantest4 = false;
 let Rantest5 = false; 
 let buttonListenerAdded = false; // Flag to ensure event listener is added only once
@@ -468,11 +465,11 @@ function animate() {
             currentTargetIndex++;
         }
     }
+
     if (earth){
         //If the earth is loaded, rotate it
         earth.rotation.y += 0.0075;
     }
-
     if (camera.position.z == -550 && camera.position.x == 50 || Rantest == true) {
         Rantest = true; 
         // show the text on the turn
@@ -482,7 +479,6 @@ function animate() {
         // My journey text will appear, I had troubles making it appeaer at 549 so i made it 549.95
         myJourneyTextMesh.visible = true;
     }
-    
     if (camera.position.z == -550 && camera.position.x == 600 || Rantest2 == true ) {        
         Rantest2 = true; 
         // Certification images will appear
@@ -492,14 +488,14 @@ function animate() {
         pythonMesh.visible = true;
         comptiaMesh.visible = true;
 
+        stargate.rotation.z += 0.005; // Rotate the stargate slowly
+
         // Rocket rotation 
         moveRocket(1, true)
-
-       
     }
     
-    if (camera.position.z == 80 && camera.position.x == 650 || Rantest4 == true) {
-        console.log("Astronaut wave function called");
+    if ((Math.abs(camera.position.z - 80) < 1 && Math.abs(camera.position.x - 650) < 1) ||
+        Rantest4 === true) {
         Rantest4 = true;
         astronautWave();
         
@@ -513,10 +509,22 @@ function animate() {
         removeObjectsFromScene(htmlandcssMesh);
         removeObjectsFromScene(pythonMesh);
         removeObjectsFromScene(comptiaMesh);    
-        
-
+        removeObjectsFromScene(earth);
     }
-    if (camera.position.z == 1000 && camera.position.x == 650 || Rantest5 == true) {
+    if((Math.abs(camera.position.z - 1000) < 1 && Math.abs(camera.position.x - 650) < 1) || Rantest5 === true)  {
+        
+        
+        removeObjectsFromScene(moon);
+        removeObjectsFromScene(welcomeTextMesh)
+        removeObjectsFromScene(aboutMeTextMesh)
+        removeObjectsFromScene(softwareTextMesh)
+        removeObjectsFromScene(itspecialistTextMesh)
+        removeObjectsFromScene(creativetechnologistTextMesh)
+        removeObjectsFromScene(oneStepTextMesh)
+
+        scene.add(primaveraMesh);
+        scene.add(evitMesh);
+        scene.add(educationTextMesh);
         scene.add(spaceNebula);
         scene.add(ToBiggerTextMesh);
         scene.add(blastingOffTextMesh);
@@ -525,7 +533,14 @@ function animate() {
         scene.add(space_rocks);
         scene.add(legoShip);
 
+        legoShip.rotation.y = -1; // Rotate the lego ship slowly
+        legoShip.rotation.x = 1;
+
+        legoShip.position.x += 1; // Move the lego ship forward slowly
+        
+
         if (Rantest5 == false) {
+            console.log("Rocket and camera moved to stargate position");
             // Move the rocket to the stargate position
             rocket.position.set(0, 0, 1005);
             stargate.position.set(0, 0, 1000);
@@ -534,15 +549,13 @@ function animate() {
         }
         Rantest = false;
         Rantest2 = false;
-        Rantest3 = false;
         Rantest4 = false;
         Rantest5 = true;
 
         rocket.rotation.y += 0.01;
         rocket.position.z -= 1
-        //Remove unused objects to free up memory
-        removeObjectsFromScene(moon);
-        scene.remove(astronaut);
+
+        console.log("This is running")
     }
 
     // Show the button when the journey is complete (at the last camera target)
@@ -554,7 +567,6 @@ function animate() {
                 window.location.href = '/';
             });
             buttonListenerAdded = true;
-            console.log('Projects button displayed');
         }
     }
    

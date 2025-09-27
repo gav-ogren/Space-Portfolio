@@ -18,7 +18,7 @@ If you are developing a production application, we recommend using TypeScript wi
 An interactive **3D portfolio** built with [Three.js](https://threejs.org/) and [Vite](https://vitejs.dev/).  
 This project visualizes my **career, certifications, and journey** as an immersive trip through space.  
 
-🌐 **Live Demo**: [Your Netlify URL here]  
+🌐 **Live Demo**: https://spaceprojportfolio.netlify.app/
 
 ---
 

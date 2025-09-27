@@ -147,7 +147,7 @@ const SplitText = ({
   </SplitText>
 
   <a 
-    href="../public/Space-Portfolio-main/index.html" 
+    href="/Space-Portfolio-main/index.html" 
     style={{ fontSize: "1.5rem" }}
   >
     GO NOW!

@@ -2,8 +2,8 @@ import Galaxy from '../components/Backgrounds/Galaxy/Galaxy';
 import '../components/Backgrounds/Galaxy/Galaxy.css';
 import CardNav from '../components/Components/CardNav/CardNav'; 
 import '../css/App.css'
-// import logo from '.../public/Space-Portfolio-main/Images/icon.png'; 
-import logo from '../../public/Space-Portfolio-main/images/icon.png';
+// Assets in `public/` should be referenced via root-relative URLs in Vite
+const logo = '/Space-Portfolio-main/Images/icon.png';
 import { ImTextColor } from 'react-icons/im';
 
 
@@ -17,7 +17,7 @@ export default function App() {
       bgColor: "#0056b8ff",
       textColor: '#ffffffff', 
       links: [
-        { label: "LinkedIn", ariaLabel: "", href: "https://www.linkedin.com/in/gavin-ogren", image: "/Space-Portfolio-main/images/icon.png" },
+        { label: "LinkedIn", ariaLabel: "", href: "https://www.linkedin.com/in/gavin-ogren", image: "/Space-Portfolio-main/Images/icon.png" },
       ]
     },
       {
@@ -25,7 +25,7 @@ export default function App() {
       bgColor: "#000000ff",
       textColor: '#fdfdfdff', 
       links: [
-        { label: "GitHub", ariaLabel: "", href: "https://github.com/gav-ogren", image: "/Space-Portfolio-main/images/icon.png" },
+        { label: "GitHub", ariaLabel: "", href: "https://github.com/gav-ogren", image: "/Space-Portfolio-main/Images/icon.png" },
       ]
     },
       {
@@ -33,7 +33,7 @@ export default function App() {
       bgColor: "#ffffffff",
       textColor: '#000000ff', 
       links: [
-        { label: "Simplified Resume", ariaLabel: "About Company", href: "../public/gavin-ogren-bio/index.html", image: "/Space-Portfolio-main/images/icon.png" },
+        { label: "Simplified Resume", ariaLabel: "About Company", href: "/gavin-ogren-bio/index.html", image: "/Space-Portfolio-main/Images/icon.png" },
       ]
     },
   ];
@@ -44,7 +44,7 @@ export default function App() {
       <div className='text-box'>  
        <div className='hero'>
         <h1>GO ON A<br/>PRIVATE <br/><span style={{ color: "red" }}>MISSION</span></h1>
-         <a href="../public/Space-Portfolio-main/index.html" style={{ fontSize: "1.5rem" }}> GO NOW! </a> 
+         <a href="/Space-Portfolio-main/index.html" style={{ fontSize: "1.5rem" }}> GO NOW! </a> 
       </div>
      </div>
     </Galaxy>

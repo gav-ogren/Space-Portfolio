@@ -193,10 +193,19 @@ const CardNav = ({
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
                   >
-                    <GoArrowUpRight
-                      className="nav-card-link-icon"
-                      aria-hidden="true"
-                    />
+                    {lnk.image ? (
+                      <img
+                        src={lnk.image}
+                        alt=""
+                        className="nav-card-link-image"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <GoArrowUpRight
+                        className="nav-card-link-icon"
+                        aria-hidden="true"
+                      />
+                    )}
                     {lnk.label}
                   </a>
                 ))}

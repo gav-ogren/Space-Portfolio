@@ -219,10 +219,10 @@ fontLoader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/helvetiker_re
     });
     scene.add(creativetechnologistTextMesh);
 
-    myJourneyTextMesh = createTextMesh('My Journey', font, {
+    myJourneyTextMesh = createTextMesh('My Journey: Certifications', font, {
         position: new THREE.Vector3(650, 10, -580),
         size: 10,
-        color: 0xff0000, // red
+        color: 0xffff00, // red
         
     });    
     scene.add(myJourneyTextMesh);
@@ -319,11 +319,11 @@ const mccMesh = new THREE.Mesh(imageGeometry, mccMaterial);
 const primaveraMesh = new THREE.Mesh(imageGeometry, primaveraMaterial);
 const evitMesh = new THREE.Mesh(imageGeometry, evitMaterial); 
 
-mtaMesh.position.set(650, 0, -200,); // Position it where you want
-awsMesh.position.set(650, 0, -250,); 
-htmlandcssMesh.position.set(650, 0, -300,); 
-pythonMesh.position.set(650, 0, -350,); 
-comptiaMesh.position.set(650, 0, -400);
+mtaMesh.position.set(650, 0, -150); // Position it where you want
+awsMesh.position.set(650, 0, -200); 
+htmlandcssMesh.position.set(650, 0, -250); 
+pythonMesh.position.set(650, 0, -300); 
+comptiaMesh.position.set(650, 0, -350);
 
 mccMesh.position.set(0, 20, 350);
 primaveraMesh.position.set(0, 20, 550);
@@ -542,9 +542,9 @@ function animate() {
         scene.add(space_rocks);
         scene.add(legoShip);
 
+
         legoShip.rotation.y = -1; // Rotate the lego ship slowly
         legoShip.rotation.x = 1;
-
         legoShip.position.x += 1; // Move the lego ship forward slowly
         
 
@@ -563,8 +563,6 @@ function animate() {
 
         rocket.rotation.y += 0.01;
         rocket.position.z -= 1
-
-        console.log("This is running")
     }
 
     // Show the button when the journey is complete (at the last camera target)

@@ -126,8 +126,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 12px 16px;
-  gap: 8px;
+  padding: 8px 12px;
+  gap: 4px;
   user-select: none;
 }
 
@@ -138,7 +138,8 @@
 }
 
 .nav-card-links {
-  margin-top: auto;
+  /* Place links right under the label for a tighter layout */
+  margin-top: 4px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -156,6 +157,20 @@
 
 .nav-card-link:hover {
   opacity: 0.75;
+}
+
+/* Small image inside the link */
+.nav-card-link-image {
+  width: 18px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+/* Make the arrow icon compact when used */
+.nav-card-link-icon {
+  width: 16px;
+  height: 16px;
 }
 
 @media (max-width: 768px) {

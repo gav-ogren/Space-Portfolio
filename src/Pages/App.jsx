@@ -17,7 +17,7 @@ export default function App() {
       bgColor: "#0056b8ff",
       textColor: '#ffffffff', 
       links: [
-        {label: "Company", ariaLabel: "", href:"https://www.linkedin.com/in/gavin-ogren"},
+        { label: "LinkedIn", ariaLabel: "", href: "https://www.linkedin.com/in/gavin-ogren", image: "/Space-Portfolio-main/images/icon.png" },
       ]
     },
       {
@@ -25,7 +25,7 @@ export default function App() {
       bgColor: "#000000ff",
       textColor: '#fdfdfdff', 
       links: [
-        {label: "GitHub", ariaLabel: "", href:"../public/Space-Portfolio-main/index.html"},
+        { label: "GitHub", ariaLabel: "", href: "https://github.com/gav-ogren", image: "/Space-Portfolio-main/images/icon.png" },
       ]
     },
       {
@@ -33,7 +33,7 @@ export default function App() {
       bgColor: "#ffffffff",
       textColor: '#000000ff', 
       links: [
-        {label: "Company", ariaLabel: "About Company", href:"../public/gavin-ogren-bio/index.html"},
+        { label: "Simplified Resume", ariaLabel: "About Company", href: "../public/gavin-ogren-bio/index.html", image: "/Space-Portfolio-main/images/icon.png" },
       ]
     },
   ];

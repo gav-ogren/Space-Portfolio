@@ -82,6 +82,14 @@ legoShipLoader.load('models/lego_ship.glb', function (gltf)
     legoShip.position.set(300, 0, 700);
 });
 
+let galaxy; 
+const galaxyLoader = new THREE.GLTFLoader();
+galaxyLoader.load('models/galaxy.glb', function (gltf){
+    galaxy = gltf.scene;
+    galaxy.scale.set(50, 50, 50);
+    galaxy.position.set(0, 0, 1000);
+}); 
+
 let spaceNebula; 
 const spaceNebulaLoader = new THREE.GLTFLoader();
 spaceNebulaLoader.load('models/space_nebula.glb', function (gltf)
@@ -430,10 +438,10 @@ function moveRocket(rocket_speed, rotation) {
 
 // Camera targets for dynamic camera movement
 const cameraTargets = [
-    {x: 50, y: 0, z: 400, speed: 10.5}, // Hovering aorund the earth
-    {x: 50, y: 0, z: 401, speed: 10.005},// waits about 5 seconds before moving to the next target
-    {x: 50, y: 0, z: -150, speed: 12.5}, // Moving pass earth 
-    {x: 50, y: 0, z: -550, speed: 13.5}, // Going past text meshs
+    {x: 50, y: 0, z: 400, speed: 0.5}, // Hovering aorund the earth
+    {x: 50, y: 0, z: 401, speed: 0.005},// waits about 5 seconds before moving to the next target
+    {x: 50, y: 0, z: -150, speed: 2.5}, // Moving pass earth 
+    {x: 50, y: 0, z: -550, speed: 3.5}, // Going past text meshs
     {x: 600, y: 0, z: -550, speed: 5, rotY: Math.PI / -2}, // takes a turn to the right and moves towards the rocket
     {x: 600, y: 0, z: -549, speed: 0.05}, // waits about 2 seconds before moving to the next target
     {x: 600, y: 0, z: -100, speed: 1}, // Rocket Moves with the camera 
@@ -524,6 +532,7 @@ function animate() {
 
         scene.add(primaveraMesh);
         scene.add(evitMesh);
+        scene.add(mccMesh);
         scene.add(educationTextMesh);
         scene.add(spaceNebula);
         scene.add(ToBiggerTextMesh);
